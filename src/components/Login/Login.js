@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Button from '../UI/Button/Button';
 import Card from '../UI/Card/Card';
@@ -14,13 +14,15 @@ const Login = (props) => {
 
   const [formIsValid, setFormIsValid] = useState(false);
 
+  useEffect(() => {
+    console.log('validation triggered!');
+    setFormIsValid(
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    );
+  }, [enteredEmail, enteredPassword]);
+
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-
-    // base on the condition, it will return true or false.   it will return true if both of the conditions are met.
-    setFormIsValid(
-      event.target.value.includes('@') && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler = (event) => {

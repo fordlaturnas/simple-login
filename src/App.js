@@ -8,8 +8,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // by default isLoggedIn is set to false.
 
   useEffect(() => {
-    const storeUserLoginInformation = localStorage.getItem('isLoggedIn');
-    if (storeUserLoginInformation === '1') {
+    const storeUserLoggedInInformation = localStorage.getItem('isLoggedIn');
+    if (storeUserLoggedInInformation === '1') {
       setIsLoggedIn(true);
     }
   }, []);
